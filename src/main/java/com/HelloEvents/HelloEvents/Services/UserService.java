@@ -1,5 +1,4 @@
 package com.HelloEvents.HelloEvents.Services;
-
 import com.HelloEvents.HelloEvents.DTO.UserDto;
 import com.HelloEvents.HelloEvents.Entity.User;
 import com.HelloEvents.HelloEvents.Repository.UserRepository;
@@ -53,5 +52,9 @@ public class UserService {
     // Helper method to find user by email
     public User findByEmail(String email) {
         return (User) userRepository.findByEmail(email);
+    }
+
+    public int getUserFindByRole( String Role) {
+        return userRepository.findByRole(Role);
     }
 }

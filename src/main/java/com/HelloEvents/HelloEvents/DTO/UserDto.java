@@ -21,9 +21,9 @@ public class UserDto {
     private String role;
     private String matchingPassword;
 
-    public String getRole() {
+        public String getRole() {
         return role;
-    }
+      }
 
     public void setRole(String role) {
         this.role = role;
@@ -36,7 +36,7 @@ public class UserDto {
         this.matchingPassword = matchingPassword;
     }
 
-    // Optionally, you can add a method to check if the passwords match
+
     public boolean passwordsMatch() {
         return this.password != null && this.password.equals(this.matchingPassword);
     }

@@ -16,7 +16,7 @@ import java.util.function.Function;
 public class JwtUtil {
 
     private final String SECRET_KEY = "mySecretKeyForJWTTokenGenerationThatShouldBeLongEnough";
-    private final int JWT_EXPIRATION = 86400000; // 24 hours in milliseconds
+    private final int JWT_EXPIRATION = 86400000;
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());

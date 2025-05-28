@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             try {
                 email = jwtUtil.extractEmail(jwt);
             } catch (Exception e) {
-                // Invalid token, continue without authentication
+
             }
         }
 

@@ -37,11 +37,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable) // Disable CSRF for stateless API
+                .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless session
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/register", "/api/users/login").permitAll() // Allow public access to register and login
-                        .anyRequest().authenticated() // Require authentication for all other endpoints
+                        .requestMatchers("/api/users/register", "/api/users/login").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(new JwtAuthenticationFilter(jwtUtil, userDetailsService()), UsernamePasswordAuthenticationFilter.class);
@@ -52,9 +52,9 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return email -> {
-            com.HelloEvents.HelloEvents.Entity.User user = userService.findByEmail(email); // Fixed package name
+            com.HelloEvents.HelloEvents.Entity.User user = userService.findByEmail(email);
             if (user == null) {
-                throw new UsernameNotFoundException("User not found with email: " + email); // Use proper exception
+                throw new UsernameNotFoundException("User not found with email: " + email);
             }
             return org.springframework.security.core.userdetails.User
                     .withUsername(user.getEmail())

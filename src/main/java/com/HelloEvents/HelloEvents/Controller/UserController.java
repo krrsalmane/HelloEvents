@@ -4,6 +4,7 @@ import com.HelloEvents.HelloEvents.DTO.UserDto;
 import com.HelloEvents.HelloEvents.Entity.User;
 import com.HelloEvents.HelloEvents.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,4 +27,10 @@ public class UserController {
     public User login(@RequestBody UserDto request) {
         return userService.login(request.getEmail(), request.getPassword());
     }
-}
+    @GetMapping("/count/{role}")
+    public ResponseEntity<Integer> getUserCountByRole(@RequestParam String role) {
+        int count = userService.getUserFindByRole(role);
+        return ResponseEntity.ok(count);
+
+
+}}
